@@ -1,0 +1,88 @@
+
+$title-font: 'Roboto Slab', serif;
+$text-font: 'Ubuntu', sans-serif;
+$dark-mode: false;
+
+$theme: (
+  'background': #f8f8f8,
+  'on-background': #343434,
+  'primary': #2aac5c,
+  'on-primary': #ffffff,
+  'on-primary-alpha': #000000aa
+);
+
+@if $dark-mode {
+  $theme: (
+    'background': #343434,
+    'on-background': #cccccc,
+    'primary': #30c569,
+    'on-primary': #000000,
+    'on-primary-alpha': #000000aa
+  );
+}
+
+@function get-color($color) {
+  @return map-get($theme, $color);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+body {
+  background-color: get-color('background');
+  padding: 2rem;
+  font-family: $text-font;
+}
+
+h1,
+h2 {
+  font-family: $title-font;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main {
+  padding: 1rem;
+}
+
+.button {
+  border: none;
+  background: get-color('primary');
+  color: get-color('on-primary');
+  padding: .5rem 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 3px;
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.section {
+  max-width: 768px;
+  margin: auto;
+  
+  &__title {
+    margin-bottom: .5rem;
+    color: get-color('primary');
+    font-size: 2rem;
+    font-weight: 300;
+  }
+
+  &__text {
+    color: get-color('on-background');
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    font-size: 1.25rem;
+  }
+}
